@@ -9,13 +9,13 @@ models = {
     "🌲 Decision Tree - Accuracy: 88.50%": 'tuned_decision_tree_model.joblib'
 }
 
-# Custom CSS for rich styling with dark theme
+# Custom CSS for rich styling
 st.markdown("""
     <style>
-        /* Dark background styling */
+        /* Background styling */
         .main {
-            background-color: #121212;  /* Dark background */
-            color: #e0e0e0;  /* Light text color */
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+            color: #333;
             padding: 20px;
             font-family: 'Arial', sans-serif;
         }
@@ -34,19 +34,13 @@ st.markdown("""
             color: #ff6347;
             text-align: center;
         }
-        /* Input styling for dark mode */
+        /* Input styling */
         .stSlider label, .stTextInput label, .stNumberInput label {
-            color: #e0e0e0;  /* Light labels */
+            color: #333;
             font-size: 1.1em;
             font-weight: 600;
         }
-        /* Input fields background */
-        .stSlider, .stTextInput, .stNumberInput, .stSelectbox, .stTextArea {
-            background-color: #333;  /* Dark input fields */
-            color: #e0e0e0;  /* Light text */
-            border: 1px solid #555;
-        }
-        /* Buttons styling */
+        /* Prediction button styling */
         .stButton button {
             background-color: #4CAF50;
             color: white;
@@ -58,15 +52,6 @@ st.markdown("""
         .stButton button:hover {
             background-color: #45a049;
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-        }
-        /* Styling for selectbox and dropdown */
-        .stSelectbox select {
-            background-color: #333;
-            color: #e0e0e0;
-            border: 1px solid #555;
-        }
-        .stSelectbox select:focus {
-            background-color: #444;
         }
     </style>
 """, unsafe_allow_html=True)
