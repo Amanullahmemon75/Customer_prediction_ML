@@ -69,7 +69,7 @@ def predict(input_data, model_file):
     model = joblib.load(model_file)
     input_data = np.array(input_data).reshape(1, -1)
     prediction = model.predict(input_data)
-    return "🌟 Not Likely to Convert" if prediction[0] == 0 else "⚠️Likely to Convert"
+    return "🌟Likely to Convert" if prediction[0] == 0 else "⚠️Not Likely to Convert"
 
 # Collect user inputs with columns and grouping
 st.markdown("<div class='subheader'>🧑‍💼 Customer Details</div>", unsafe_allow_html=True)
