@@ -19,8 +19,6 @@ st.markdown("""
             padding: 20px;
             font-family: 'Arial', sans-serif;
         }
-    </style>
-""", unsafe_allow_html=True)
         /* Title styling */
         .title {
             color: #fff;
