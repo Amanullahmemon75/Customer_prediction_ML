@@ -14,11 +14,13 @@ st.markdown("""
     <style>
         /* Background styling */
         .main {
-            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
-            color: #333;
+            background-color: black;
+            color: white;  /* White text on black background */
             padding: 20px;
             font-family: 'Arial', sans-serif;
         }
+    </style>
+""", unsafe_allow_html=True)
         /* Title styling */
         .title {
             color: #fff;
