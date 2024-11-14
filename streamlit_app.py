@@ -29,28 +29,28 @@ model_file = models[model_choice]
 # Collect user input with suitable alignment
 st.subheader("Customer Information")
 age = st.slider("Age", min_value=0, max_value=100, value=30)
+gender = st.selectbox("Gender", options=["Male", "Female", "Other"])
 income = st.number_input("Income", min_value=0.0, value=50000.0)
-previous_purchases = st.number_input("Previous Purchases", min_value=0.0, value=10.0)
-loyalty_points = st.number_input("Loyalty Points", min_value=0.0, value=100.0)
-
-st.subheader("Campaign Engagement")
-total_page_views = st.number_input("Total Page Views", min_value=0.0, value=5.0)
-time_on_site = st.slider("Time on Site (minutes)", min_value=0.0, max_value=100.0, value=15.0)
-click_through_rate = st.slider("Click Through Rate (%)", min_value=0.0, max_value=100.0, value=10.0)
 ad_spend = st.number_input("Ad Spend", min_value=0.0, value=1000.0)
+click_through_rate = st.slider("Click Through Rate (%)", min_value=0.0, max_value=100.0, value=10.0)
 conversion_rate = st.slider("Conversion Rate (%)", min_value=0.0, max_value=100.0, value=5.0)
+time_on_site = st.slider("Time on Site (minutes)", min_value=0.0, max_value=100.0, value=15.0)
 social_shares = st.number_input("Social Shares", min_value=0.0, value=2.0)
 email_activity = st.slider("Email Activity (Opens)", min_value=0.0, max_value=50.0, value=10.0)
+previous_purchases = st.number_input("Previous Purchases", min_value=0.0, value=10.0)
+loyalty_points = st.number_input("Loyalty Points", min_value=0.0, value=100.0)
+total_page_views = st.number_input("Total Page Views", min_value=0.0, value=5.0)
 
 # Arrange the input data according to the model's expected features
+# Note: Gender input may need to be preprocessed as a numeric value if model requires it
+gender_numeric = {"Male": 0, "Female": 1, "Other": 2}.get(gender, 0)  # Example encoding
 input_data = [
-    total_page_views, time_on_site, click_through_rate, ad_spend, conversion_rate,
-    loyalty_points, email_activity, income, previous_purchases, social_shares, age
+    age, gender_numeric, income, ad_spend, click_through_rate, 
+    conversion_rate, time_on_site, social_shares, email_activity, 
+    previous_purchases, loyalty_points, total_page_views
 ]
 
 # When the user clicks the predict button
 if st.button("Predict"):
     prediction = predict(input_data, model_file)
     st.write(f"Customer Conversion Prediction: {prediction}")
-
-
