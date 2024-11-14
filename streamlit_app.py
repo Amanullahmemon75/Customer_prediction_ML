@@ -73,31 +73,37 @@ def predict(input_data, model_file):
 
 # Collect user inputs with columns and grouping
 st.markdown("<div class='subheader'>🧑‍💼 Customer Details</div>", unsafe_allow_html=True)
+
+# Use separate layout for sliders and number inputs
+st.markdown("### Select Customer Information")
+
+# Collect sliders (age, click-through rate, etc.)
 col1, col2, col3 = st.columns(3)
 
 with col1:
     age = st.slider("Age", min_value=0, max_value=100, value=30)
-    gender = st.selectbox("Gender", options=["Male", "Female", "Other"])
-    income = st.number_input("Income ($)", min_value=0.0, value=50000.0, step=1000.0)
-    
-with col2:
-    ad_spend = st.number_input("Ad Spend ($)", min_value=0.0, value=1000.0, step=50.0)
     click_through_rate = st.slider("Click Through Rate (%)", min_value=0.0, max_value=100.0, value=10.0)
     conversion_rate = st.slider("Conversion Rate (%)", min_value=0.0, max_value=100.0, value=5.0)
-    
-with col3:
+
+with col2:
     time_on_site = st.slider("Time on Site (minutes)", min_value=0.0, max_value=100.0, value=15.0)
-    social_shares = st.number_input("Social Shares", min_value=0, value=2, step=1)
     email_activity = st.slider("Email Activity (Opens)", min_value=0, max_value=50, value=10)
 
-st.markdown("<div class='subheader'>📊 Engagement Metrics</div>", unsafe_allow_html=True)
+with col3:
+    ad_spend = st.number_input("Ad Spend ($)", min_value=0.0, value=1000.0, step=50.0)
+    social_shares = st.number_input("Social Shares", min_value=0, value=2, step=1)
+
+# Collect number inputs (income, previous purchases, etc.)
+st.markdown("### Engagement Metrics")
 col4, col5 = st.columns(2)
 
 with col4:
+    gender = st.selectbox("Gender", options=["Male", "Female", "Other"])
+    income = st.number_input("Income ($)", min_value=0.0, value=50000.0, step=1000.0)
     previous_purchases = st.number_input("Previous Purchases", min_value=0, value=10, step=1)
-    loyalty_points = st.number_input("Loyalty Points", min_value=0, value=100, step=5)
 
 with col5:
+    loyalty_points = st.number_input("Loyalty Points", min_value=0, value=100, step=5)
     total_page_views = st.number_input("Total Page Views", min_value=0, value=5, step=1)
 
 # Convert gender to numeric for model compatibility
