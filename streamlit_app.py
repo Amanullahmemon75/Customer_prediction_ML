@@ -14,35 +14,35 @@ st.markdown("""
     <style>
         /* Background styling */
         .main {
-            background-color: black;
-            color: white;  /* White text on black background */
+            background: linear-gradient(135deg, #ececec, #f5f5f5);
+            color: #000; /* Dark color for text */
             padding: 20px;
             font-family: 'Arial', sans-serif;
         }
         /* Title styling */
         .title {
-            color: #fff;
+            color: #1a73e8; /* Blue shade for visibility */
             font-size: 3em;
             font-weight: bold;
             text-align: center;
-            text-shadow: 2px 2px #ff7f50;
+            text-shadow: 1px 1px #888888;
         }
         /* Subtitle styling */
         .subheader {
             font-size: 1.5em;
             font-weight: bold;
-            color: #ff6347;
+            color: #1a73e8; /* Blue shade */
             text-align: center;
         }
         /* Input styling */
         .stSlider label, .stTextInput label, .stNumberInput label {
-            color: #333;
+            color: #111; /* Darker shade for contrast */
             font-size: 1.1em;
             font-weight: 600;
         }
         /* Prediction button styling */
         .stButton button {
-            background-color: #4CAF50;
+            background-color: #4285f4; /* Blue button for contrast */
             color: white;
             font-size: 1.2em;
             padding: 0.5em 1em;
@@ -50,7 +50,7 @@ st.markdown("""
             transition: 0.3s;
         }
         .stButton button:hover {
-            background-color: #45a049;
+            background-color: #357ae8; /* Darker hover effect */
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
         }
     </style>
@@ -69,7 +69,7 @@ def predict(input_data, model_file):
     model = joblib.load(model_file)
     input_data = np.array(input_data).reshape(1, -1)
     prediction = model.predict(input_data)
-    return "🌟Likely to Convert" if prediction[0] == 0 else "⚠️Not Likely to Convert"
+    return "🌟 Likely to Convert" if prediction[0] == 0 else "⚠️ Not Likely to Convert"
 
 # Collect user inputs with columns and grouping
 st.markdown("<div class='subheader'>🧑‍💼 Customer Details</div>", unsafe_allow_html=True)
@@ -119,4 +119,4 @@ input_data = [
 # Prediction
 if st.button("🔍 Predict Conversion"):
     prediction = predict(input_data, model_file)
-    st.markdown(f"<h3 style='color: #4CAF50; text-align: center;'>Result: {prediction}</h3>", unsafe_allow_html=True)
+    st.markdown(f"<h3 style='color: #1a73e8; text-align: center;'>Result: {prediction}</h3>", unsafe_allow_html=True)
